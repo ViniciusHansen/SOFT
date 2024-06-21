@@ -172,4 +172,20 @@ public class Stock {
     public int getMaxSideId() {
         return maxSideId;
     }
+
+    public int getSandwichQuantity(int sandwichId) {
+        Sandwich sandwich = sandwichStock.getOrDefault(sandwichId, null);
+        return (sandwich != null) ? sandwich.getQuantity() : 0;
+    }
+
+    public int getDrinkQuantity(int drinkId) {
+        Drink drink = drinkStock.getOrDefault(drinkId, null);
+        return (drink != null) ? drink.getQuantity() : 0;
+    }
+
+    public int getSideQuantity(int sideId) {
+        Side side = sideStock.getOrDefault(sideId, null);
+        return (side != null) ? side.getQuantity() : 0;
+    }
+
 }

@@ -306,17 +306,17 @@ public class Main {
                 System.out.println("Insira a quantidade a ser removida do estoque: ");
                 removeQuantity = scanner.nextInt();
                 scanner.nextLine();
-                inventory.removeSandwichStock(choice,removeQuantity);
+                inventory.removeSandwichStock(sandwiches.get(choice).getId(),removeQuantity);
             } else if (choice > sandwiches.size() && choice <= sandwiches.size() + sides.size()) {
                 System.out.println("Insira a quantidade a ser removida do estoque: ");
                 removeQuantity = scanner.nextInt();
                 scanner.nextLine();
-                inventory.removeSideStock(choice - sandwiches.size(),removeQuantity);
+                inventory.removeSideStock(sides.get(choice - sandwiches.size()).getId(),removeQuantity);
             } else if (choice > sandwiches.size() + sides.size() && choice <= sandwiches.size() + sides.size() + drinks.size()) {
                 System.out.println("Insira a quantidade a ser removida do estoque: ");
                 removeQuantity = scanner.nextInt();
                 scanner.nextLine();
-                inventory.removeDrinkStock(choice - sandwiches.size() - sides.size(),removeQuantity);
+                inventory.removeDrinkStock(drinks.get(choice - sides.size() - sandwiches.size()).getId(),removeQuantity);
             } else {
                 System.out.println("Opção inválida. Tente novamente.");
             }
@@ -345,17 +345,17 @@ public class Main {
                 System.out.println("Insira a quantidade a ser adicionada ao estoque: ");
                 addQuantity = scanner.nextInt();
                 scanner.nextLine();
-                inventory.addSandwichStock(choice,addQuantity);
+                inventory.addSandwichStock(sandwiches.get(choice).getId(),addQuantity);
             } else if (choice > sandwiches.size() && choice <= sandwiches.size() + sides.size()) {
                 System.out.println("Insira a quantidade a ser adicionada ao estoque: ");
                 addQuantity = scanner.nextInt();
                 scanner.nextLine();
-                inventory.addSideStock(choice - sandwiches.size(),addQuantity);
+                inventory.addSideStock(sides.get(choice - sandwiches.size()).getId() ,addQuantity);
             } else if (choice > sandwiches.size() + sides.size() && choice <= sandwiches.size() + sides.size() + drinks.size()) {
                 System.out.println("Insira a quantidade a ser adicionada ao estoque: ");
                 addQuantity = scanner.nextInt();
                 scanner.nextLine();
-                inventory.addDrinkStock(choice - sandwiches.size() - sides.size(),addQuantity);
+                inventory.addDrinkStock(drinks.get(choice - sides.size() - sandwiches.size()).getId(),addQuantity);
             } else {
                 System.out.println("Opção inválida. Tente novamente.");
             }
