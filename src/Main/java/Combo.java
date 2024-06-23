@@ -1,68 +1,91 @@
 package Main.java;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Combo {
 
-    private Sandwich sandwich;
-    private Side side;
-    private Drink drink;
+    private List<Sandwich> sandwiches = new ArrayList<>();
+    private List<Side> sides = new ArrayList<>();
+    private List<Drink> drinks = new ArrayList<>();
 
-    public Sandwich getSandwich() {
-        return sandwich;
+    public List<Sandwich> getSandwiches() {
+        return sandwiches;
     }
 
-    public void setSandwich(Sandwich sandwich) {
-        this.sandwich = sandwich;
+    public void setSandwiches(List<Sandwich> sandwiches) {
+        this.sandwiches = sandwiches;
     }
 
-    public Side getSide() {
-        return side;
+    public List<Side> getSides() {
+        return sides;
     }
 
-    public void setSide(Side side) {
-        this.side = side;
+    public void setSides(List<Side> sides) {
+        this.sides = sides;
     }
 
-    public Drink getDrink() {
-        return drink;
+    public List<Drink> getDrinks() {
+        return drinks;
     }
 
-    public void setDrink(Drink drink) {
-        this.drink = drink;
+    public void setDrinks(List<Drink> drinks) {
+        this.drinks = drinks;
+    }
+
+    public void addSandwich(Sandwich sandwich) {
+        this.sandwiches.add(sandwich);
+    }
+
+    public void addSide(Side side) {
+        this.sides.add(side);
+    }
+
+    public void addDrink(Drink drink) {
+        this.drinks.add(drink);
     }
 
     public String getDescription() {
         StringBuilder description = new StringBuilder();
-        if (sandwich != null) {
+
+        for (Sandwich sandwich : sandwiches) {
+            if (description.length() > 0) {
+                description.append(", ");
+            }
             description.append(sandwich.getDescription());
         }
-        if (side != null) {
-            if (!description.isEmpty()) {
+
+        for (Side side : sides) {
+            if (description.length() > 0) {
                 description.append(", ");
             }
             description.append(side.getDescription());
         }
-        if (drink != null) {
-            if (!description.isEmpty()) {
+
+        for (Drink drink : drinks) {
+            if (description.length() > 0) {
                 description.append(", ");
             }
             description.append(drink.getDescription());
         }
+
         return description.toString();
     }
 
     public float getPrice() {
         float price = 0;
-        if (sandwich != null) {
+
+        for (Sandwich sandwich : sandwiches) {
             price += sandwich.getPrice();
         }
-        if (side != null) {
+
+        for (Side side : sides) {
             price += side.getPrice();
         }
-        if (drink != null) {
+
+        for (Drink drink : drinks) {
             price += drink.getPrice();
         }
+
         return price;
     }
 }
-
-// You would implement Sandwich, Side, and Drink here following the same pattern as Combo

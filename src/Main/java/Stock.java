@@ -82,13 +82,19 @@ public class Stock {
         Sandwich sandwich = sandwichStock.get(sandwichId);
         if (sandwich != null) {
             int currentQuantity = sandwich.getQuantity();
-            if(currentQuantity - quantity <= 0){
+            if(currentQuantity - quantity == 0){
                 sandwich.setQuantity(0);
                 sandwichStock.put(sandwichId, sandwich);
-                return;
+            }else if(currentQuantity - quantity < 0){
+//                throw new InsufficientQuantityException("Quantidade insuficiente de Sanduíche em estoque");
+                sandwich.setQuantity(0);
+                sandwichStock.put(sandwichId, sandwich);
+                System.out.println("Estoque acabou, por favor selecione outro item.");
             }
-            sandwich.setQuantity(currentQuantity - quantity);
-            sandwichStock.put(sandwichId, sandwich);
+            else {
+                sandwich.setQuantity(currentQuantity - quantity);
+                sandwichStock.put(sandwichId, sandwich);
+            }
         }
     }
 
@@ -96,7 +102,12 @@ public class Stock {
         Drink drink = drinkStock.get(drinkId);
         if (drink != null) {
             int currentQuantity = drink.getQuantity();
-            if (currentQuantity - quantity <= 0) {
+            if (currentQuantity - quantity == 0) {
+                drink.setQuantity(0);
+                drinkStock.put(drinkId, drink);
+            }else if(currentQuantity - quantity < 0) {
+//                throw new InsufficientQuantityException("Quantidade insuficiente de Bebida em estoque");
+                System.out.println("Estoque acabou, por favor selecione outro item.");
                 drink.setQuantity(0);
                 drinkStock.put(drinkId, drink);
             } else {
@@ -110,7 +121,12 @@ public class Stock {
         Side side = sideStock.get(sideId);
         if (side != null) {
             int currentQuantity = side.getQuantity();
-            if (currentQuantity - quantity <= 0) {
+            if (currentQuantity - quantity == 0) {
+                side.setQuantity(0);
+                sideStock.put(sideId, side);
+            }else if(currentQuantity - quantity < 0){
+//                throw new InsufficientQuantityException("Quantidade insuficiente de Acompanhamento em estoque");
+                System.out.println("Estoque acabou, por favor selecione outro item.");
                 side.setQuantity(0);
                 sideStock.put(sideId, side);
             } else {
